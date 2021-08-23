@@ -1,0 +1,382 @@
+     /* 樣式清空 */
+     * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    /* body{
+        background-color: red;
+    } */
+
+/* 蓋板廣告 */
+    .full-screen{
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.5);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .full-screen .text{
+        width: 90%;
+        max-width: 500px;
+        height: 100px;
+        max-height: 80%;
+        background: #fff;
+        padding: 20px;
+        text-align: center;
+        line-height: 100px;
+        background:linear-gradient(30deg,rgb(238, 143, 143) , rgb(110, 120, 248));
+
+
+        position: relative;
+    }
+
+    .full-screen .text .btn-close{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        top: -10px;
+        right: -10px;
+        
+        color: whitesmoke;
+        font-size: 10px;
+
+        text-decoration: none;
+        background-color: red;
+        border-radius: 50%;
+    }
+
+
+
+
+    #header {
+        /* 圖片橫向排列 */
+        width: 100%;
+        display: flex;
+    }
+
+    /* 相對定位 */
+    .item {
+        width: 25%;
+        height: 133px;
+        position: relative;
+    }
+
+    .item img {
+        width: 100%;
+        /* 清除空間 div 與 img */
+        vertical-align: middle;
+    }
+
+    /* 文字定位 */
+    .item .txt {
+        position: absolute;
+        height: 115px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, .8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        /* 延遲動畫 */
+        transition: opacity .6s;
+    }
+
+    /* 動畫 點到清除透明度 */
+    .item:hover .txt {
+        opacity: 1;
+    }
+
+    /* 去除底線 */
+    .item a {
+        text-decoration: none;
+    }
+
+    .txt h2 {
+        color: rgb(233, 236, 222);
+    }
+
+    /* 底線動畫 */
+    .item h2::after {
+        content:"";
+        display: block;
+        /* 動畫0%變100% */
+        width: 0%;
+        height: 2px;
+        margin: 1px 0;
+        background-color: rgb(233, 236, 222);
+        transition: width .5s .2s;
+    }
+
+    /* (i)設置after的content為""變成block。
+    (ii)把block用background-color顯示出來
+    (iii)width:100%是撐滿左右版面。(QQ變成正方形了)
+    (iv)再把height設定為2px就變成一條直綫。(用height壓縮正方形XD)
+    所以底綫元素是block設定出來
+
+    不設定after，好像也能直接用border-bottom + width也能完成 */
+
+    .item:hover h2::after {
+        /* 動畫0%變100% */
+        width: 100%;
+    }
+
+    /* 回首頁廣告看版 */
+    /* https://www.itread01.com/content/1542039980.html */
+    .homea{
+        position: fixed;
+        /* float: right; */
+        top: 118px;
+        right: 10px;
+        /* float: right; */
+        font-size: 200px;
+        color:  rgba(30, 154, 236 , .8);
+        /* background-color: red; */
+        /* display: none; */
+    }
+
+
+    /* 背景圖 */
+    #main {
+        /* background-color: #0f0; */
+        background-image: url(./backgroundimage.png);
+        /* background: linear-gradient(rgba(0, 0, 0, 0.), rgba(0, 0, 0, 0.5)), url(./backgroundimage.png) no-repeat 0% 20%/ cover; */
+        /* background-color: */
+        /* background-color:transparent;*/
+        /* opacity: 0.4; */
+        /* background:url(./backgroundimage.png); */
+        /* background-repeat: no-repeat; */
+        /* background-size: cover; */
+        /* background-color: rgba(255, 254, 254, .1); */
+        /* opacity: .2; */
+        /* // 設置背景混和模式為相乘模式  */
+        /* background-blend-mode: multiply; */
+    }
+
+
+    /* div #table {
+        display: block;
+        width: 1000px;
+        background-color: white;
+        margin: 0 auto;
+    } */
+
+    /* table格式 */
+    table {
+        border: 3px solid #000;
+        /* 文字粗體 */
+        font-weight: 170;
+
+        border-collapse: collapse;
+        font-family: 'Open Sans Condensed', sans-serif;
+        /* 置中 */
+        margin: 20px auto;
+        /* background-color: red; */
+        background: radial-gradient(circle at center, rgb(253, 253, 253), rgb(182, 194, 250));
+    }
+
+    /* th 跟內容格式 */
+    th {
+
+        border: 1px solid #000;
+        width: 200px;
+        height: 50px;
+        /* table欄位變寬 */
+    }
+
+    /*空白格制定底線 */
+    #space {
+        background: linear-gradient(14deg, transparent 50%,
+                black 50%, transparent 53%);
+    }
+
+    /* 標題塊置中 */
+    .mtitle {
+        width: 660px;
+        margin: 0 auto;
+        /* background-color: red; */
+    }
+
+    /* 設定標題樣式 */
+    .mtitle>h1 {
+        /* background-color: aqua; */
+        /* padding: 10px auto; */
+        text-align: center;
+        font-size: 60px;
+        /* https://www.colorzilla.com/gradient-editor 漸層工具 */
+        background: linear-gradient(45deg, #1e5799 28%, #2989d8 50%, #277ff9 68%, #7db9e8 100%);
+        ;
+        background: -webkit-linear-gradient(45deg, #1e5799 28%, #2989d8 50%, #277ff9 68%, #7db9e8 100%);
+        ;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+
+        /* 为了兼容老版本的写法。例如：比较新版本的浏览器都支持直接写：border-radius。 
+        -moz代表firefox浏览器私有属性，
+        -ms代表ie浏览器私有属性，
+        -webkit代表safari、chrome私有属性。 
+        因为制定HTML和CSS标准的组织W3C动作是很慢的。 
+        通常，有w3c组织成员提出一个新属性，比如说圆角border-radius，
+        大家都觉得好，但w3c制定标准，要走很复杂的程序，审查等。而浏览器商市场推广时间紧，
+        如果一个属性已经够成熟了，就会在浏览器中加入支持。 
+        为避免日后w3c公布标准时有所变更，加入一个私有前缀，
+        比如-webkit-border-radius，通过这种方式来提前支持新属性。 
+        等到日后w3c公布了标准，border-radius的标准写法确立之后，
+        再让新版的浏览器支持border-radius这种写法。 
+        ———————————————— 
+        版权声明：本文为CSDN博主「wyx100」的原创文章，遵循CC 4.0 BY-SA版权协议，
+        转载请附上原文出处链接及本声明。 
+        原文链接：https: //blog.csdn.net/wyx100/article/details/50450728 */
+
+    }
+
+    /* 個人資料輸入格式 */
+    fieldset {
+        width: 500px;
+        margin: 0 auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px #666;
+        background: radial-gradient(circle at center, rgb(253, 253, 253), rgb(230, 233, 197));
+    }
+
+    /* filedset標題格式 */
+    legend {
+        color: rgb(44, 53, 95);
+        font-size: 30px;
+        font-weight: bolder;
+    }
+
+    /* legend內容左移 */
+    .person {
+        padding-left: 20px;
+    }
+
+    /* 表單樣式 */
+    #form2,
+    #form3,
+    #form4,
+    #form5,
+    #form6 {
+        width: 800px;
+        margin: 10px auto;
+        border: 2px dotted #000;
+        border-radius: 10px;
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-bottom: 3px;
+        background: radial-gradient(circle at center, rgb(253, 253, 253), rgb(230, 233, 197));
+    }
+
+    /* 置中 */
+    #form {
+        /* background-color: green; */
+        margin: 10px 0px;
+    }
+
+    /* 選單前加空格 */
+    .iname2>::before,
+    .iname3>::before {
+        content: " ";
+    }
+
+    /* range條視窗 */
+    #form4 output {
+        display: inline-block;
+        padding: 0 10px;
+        margin-bottom: 4px;
+        border: 1px solid black;
+        border-radius: 15px;
+        text-decoration: underline black dashed 2px;
+    }
+
+    /* 下拉式視窗 */
+    select {
+        font-size: 18px;
+    }
+
+    /* 按鈕置中 */
+    .sub {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    /* 更改按鈕格式 */
+    .sub .but {
+        padding: 5px;
+        border-radius: 5px;
+        color: #fff;
+        font-weight: bolder;
+        background: linear-gradient(217deg, rgba(255, 0, 0, .8), rgba(255, 0, 0, 0) 70.71%),
+            linear-gradient(127deg, rgba(0, 255, 0, .8), rgba(0, 255, 0, 0) 70.71%),
+            linear-gradient(336deg, rgba(0, 0, 255, .8), rgba(0, 0, 255, 0) 70.71%);
+        /* 按鈕游標改變 */
+        cursor: pointer;
+    }
+
+    /* 按鈕底下文字左偏 */
+    .sub p {
+        padding-left: 2px;
+    }
+
+    /* footer樣式 */
+    #footer {
+        /* display: block; */
+        width: 100%;
+        height: 60px;
+        color: #fff;
+        font-size: 20px;
+        font-family: 'Segoe UI';
+        background-color: #000;
+        text-align: center;
+        /* vertical-align: middle; */
+    }
+
+    /* icon樣式 */
+    .icons a {
+        color: white;
+        margin: 0 10px;
+    }
+
+    /* mial icon樣式 變色*/
+    .mail:hover {
+        color: rgb(233, 230, 79);
+    }
+
+    /* fb icon樣式 變色*/
+    .fb:hover {
+        color: rgb(16, 114, 243);
+    }
+
+    /* ig icon樣式 變色*/
+    .ig:hover {
+        color: rgb(236, 30, 226);
+    }
+
+    /* twitter icon樣式 變色*/
+    .twitter:hover {
+        color: rgb(30, 154, 236);
+    }
+
+    /* linkin icon樣式 變色*/
+    .linkin:hover {
+        color: rgb(46, 102, 188);
+    }
+
+     /* linkin icon樣式 變色*/
+     .github:hover {
+        color: rgb(148, 156, 167);
+    }
