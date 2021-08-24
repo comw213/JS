@@ -260,7 +260,7 @@ body {
 /* audio播放器進度條 */
 #cmusic::-webkit-media-controls-timeline,
 /* audio播放器播放按鈕 */
-#cmusic::-webkit-media-controls-play-button,
+/* #cmusic::-webkit-media-controls-play-button, */
 /* audio播放器進行時間 */
 #cmusic::-webkit-media-controls-current-time-display,
 /* audio播放器剩餘時間*/
