@@ -1,0 +1,331 @@
+  /* 清除內建格式 */
+  * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+}
+/* 背景圖 */
+body {
+    width: 1200px;
+    height: 600px;
+    background: url(./flag/world4.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+/* 標題＋動畫 */
+#title {
+    font-size: 60px;
+    text-align: center;
+    /* margin-left: 240px; */
+    padding-left: 200px;
+    /* 字體間距 */
+    /* letter-spacing: 50px; */
+    /* background-color: rgba(0,0,0,.3); */
+
+    /* https://www.colorzilla.com/gradient-editor 漸層工具 */
+    /* background: linear-gradient(45deg, #991e74 28%, #d8296c 50%, #2747f9 68%, #7d7fe8 100%); */
+    animation: light 1s linear .5s infinite;
+
+}
+/* 標題動畫霓虹燈效果 */
+@keyframes light {
+    0% {
+        color: rgb(230, 40, 40);
+    }
+
+    25% {
+        color: rgb(230, 165, 25);
+    }
+
+    50% {
+        color: rgb(239, 243, 23);
+    }
+
+    75% {
+        color: chartreuse;
+    }
+
+    100% {
+        color: rgb(0, 4, 255);
+    }
+}
+
+/* 小飛機定位 */
+#fly {
+    position: absolute;
+    top: 60px;
+    left: 0px;
+    animation: fly 4s linear 1s infinite;
+}
+
+/* 小飛機動畫 */
+@keyframes fly {
+    0% {
+        left: 0px;
+    }
+
+    25% {
+        left: 375px;
+        transform: translateY(-30px);/* 向上飛 */
+    }
+
+    50% {
+        left: 750px;
+    }
+
+    75% {
+        left: 1125px;
+        transform: translateY(30px);/* 向下飛 */
+    }
+
+    100% {
+        left: 1330px;
+    }
+}
+
+
+
+/* 中間輪盤 */
+.wrapper {
+    /* border: 1px solid black; */
+    width: 605px;
+    height: 405px;
+    /* margin: 120px auto; */
+    position: relative;
+    top: 80px;
+    left: 430px;
+    z-index: 20;
+}
+/* 中間輪盤 各國國旗格式 */
+.wrapper>div {
+    border: 1px solid black;
+    width: 150px;
+    height: 100px;
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* box-sizing: border-box; */
+    z-index: 20;
+
+    cursor: pointer;
+}
+
+/* 設定貓掌按鈕區塊 */
+#cat {
+    /* position: absolute; */
+    top: 100px;
+    bottom: 120px;
+    left: 152px;
+    border: none;
+    width: 302px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(84, 186, 44, 1) 17%, rgba(45, 253, 249, 1) 100%);
+    z-index: 1;
+    padding: auto;
+    line-height: 100px;
+}
+
+/* 按鈕位置 */
+#but {
+    margin: 40px 0px;
+}
+/* 按鈕下方文字位置 */      
+#go {
+    position: absolute;
+    right: 65px;
+    top: 120px;
+    /* background-color: royalblue; */
+}
+
+/* 起點起點設置 */  
+#shadow {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 150px;
+    height: 100px;
+    /* box-shadow: 4px 4px 10px yellow; */
+    z-index: 100;
+    /* background-color: rgba(243, 233, 88, 0.7); */
+    /* display: none; */
+    background-image: url(./flag/airplane2.jpeg);
+    background-size: cover;
+    opacity: .6;
+}
+
+/* tooltip樣式 */
+.tooltip-inner {
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(142, 67, 93, 1) 48%, rgba(253, 29, 29, 1) 88%, rgba(252, 176, 69, 1) 100%);
+    text-align: left;
+    color: #fff;
+    /* border:1px solid #dedede; */
+    border-radius: 5px;
+    max-width: 400px;
+    font-size: 20px;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+/* 全畫面彈出視窗 */
+#popup {
+    width: 2000px;
+    height: 1000px;
+    margin: 0px auto;
+    background-color: rgba(10, 10, 10, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 40;
+
+    display: none; /* 全畫面彈出視窗隱藏 */
+
+}
+/* 全畫面彈出中間國家介紹視窗  */
+#card {
+    width: 300px;
+    height: 250px;
+    background-color: rgba(243, 248, 168, .8);
+    position: absolute;
+    top: 210px;
+    left: 572px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 1s;
+}
+/* 超連結位置設定 */  
+#card>a {
+    margin: 0px 50px;
+}
+
+/* 全畫面彈出中間國家介紹視窗 國旗以下內容 */
+#card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-top: 1px solid black;
+}
+
+    
+/* 全畫面彈出中間國家介紹視窗 語音按鈕內容 */
+#oral {
+    width: 20px;
+    height: 18px;
+    background-image: url(./flag/play.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+
+
+/* go參觀 超連結樣式設定 */
+#scene {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(37, 128, 233);
+    border-radius: 3px;
+    width: 100px;
+    text-align: center;
+    transition: .2s;
+}
+
+/* 關閉 超連結樣式設定 */
+#close {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(209, 39, 39);
+    border-radius: 3px;
+    margin-top: 5px;
+    width: 60px;
+    text-align: center;
+    transition: .2s;
+}
+/* go參觀 關閉 超連結樣式設定 hover設定*/
+#scene:hover,
+#close:hover {
+    text-decoration: underline;
+    box-shadow: 0px 1px 2px rgb(46, 41, 41);
+    transform: translateY(-2px);
+
+}
+
+
+/* audio播放器進度條 */
+#cmusic::-webkit-media-controls-timeline,
+/* audio播放器播放按鈕 */
+#cmusic::-webkit-media-controls-play-button,
+/* audio播放器進行時間 */
+#cmusic::-webkit-media-controls-current-time-display,
+/* audio播放器剩餘時間*/
+#cmusic::-webkit-media-controls-time-remaining-display {
+    display: none;
+
+}
+
+/* audio播放器 all控制端 */
+#cmusic::-webkit-media-controls-enclosure {
+    background-color: transparent;
+}
+
+
+
+
+/* footer樣式 */
+#footer {
+    /* display: block; */
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Segoe UI';
+    background-color: #000;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+
+}
+
+/* icon樣式 */
+.per>a {
+    color: white;
+    margin: 0 10px;
+}
+
+/* mial icon樣式 變色*/
+.mail:hover {
+    color: rgb(233, 230, 79);
+}
+
+/* fb icon樣式 變色*/
+.fb:hover {
+    color: rgb(16, 114, 243);
+}
+
+/* ig icon樣式 變色*/
+.ig:hover {
+    color: rgb(236, 30, 226);
+}
+
+/* twitter icon樣式 變色*/
+.twitter:hover {
+    color: rgb(30, 154, 236);
+}
+
+/* linkin icon樣式 變色*/
+.linkin:hover {
+    color: rgb(46, 102, 188);
+}
+
+/* linkin icon樣式 變色*/
+.github:hover {
+    color: rgb(148, 156, 167);
+}

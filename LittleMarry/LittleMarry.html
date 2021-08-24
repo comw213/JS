@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LittleMaryGame</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Icon Font Awesome CDN使用 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+    <link rel="shortcut icon" href="#">
+    <!-- css -->
+    <link rel="stylesheet" href="./LittleMarry.css">
+</head>
+
+<body>
+    <!-- 背景音樂設置  controls='controls'設定才會有控制bar-->
+    <audio id="cmusic" src="./sound/catch.mp3" autoplay="true" loop controls='controls' controlsList='nodownload'
+        style="float: left;"></audio>
+
+    <!-- 各國歡迎口說設置-->
+    <audio src="./oral/ger_welcome.mp3" id="osound"></audio>
+    <!-- 貓叫聲音設置-->
+    <audio src="./sound/cat_sound.mp3" id="catsound"></audio>
+    <!-- 背景音樂設置  controls='controls'設定才會有控制bar-->
+    <audio src="./sound/fly.mp3" id="ding"></audio>
+
+
+    <!-- 標題where are you going? -->
+    <h1 id="title">Where Are You Going?</h1>
+
+    <!-- 飛機png圖片出處 pngtree 網站 https://zh.pngtree.com/free-png-vectors/%E5%A5%BD%E7%9C%8B%E7%9A%84%E9%A3%9B%E6%A9%9F-->
+    <div id="fly">
+        <img src="./flag/air.png" alt="" width="100px">
+    </div>
+
+    <!-- 全畫面彈出中間國家介紹視窗 -->
+    <div id="popup">
+        <!-- 中間卡片樣式 -->
+        <div id="card">
+            <a href="javascript:;"><img src="./flag/Taiwan.png" alt="..." style="width: 200px; height: 120px;"
+                    id="country"></a>
+            <div id="card-body">
+                <h2 id="loc">泰國</h2>
+                <h3 id="wel">歡迎<i class='fas fa-handshake'></i></h3>
+                <input type="button" id="oral">
+                <a href="javascript:;" id="scene">參觀景點GO!</a>
+                <a href="#" id="close">關閉</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 水果盤樣式 -->
+    <div class="wrapper">
+        <div style="left:0px;top:0px;background-image: url(./flag/Taiwan.png);" id="roc" data-toggle="tooltip"
+            data-placement="top" title="台灣" value="0"></div>
+        <div style="left:151px;top:0px;background-image: url(./flag/japan2.png);" id="jpn" data-toggle="tooltip"
+            data-placement="top" title="日本"></div>
+        <div style="left:302px;top:0px;background-image:url(./flag/French2.png); " id="fre" id="jpn"
+            data-toggle="tooltip" data-placement="top" title="法國"></div>
+        <div style="left:453px;top:0px;" id="ger" data-bs-toggle="tooltip" data-bs-placement="right" id="jpn"
+            data-toggle="tooltip" data-placement="top" title="德國"><img src="./flag/Germany2.png" alt=""
+                style="width: 150px;height: 100px;"></div>
+        <div style="left:453px;top:101px;background-image: url(./flag/Holland2.png);" id="hol" data-toggle="tooltip"
+            data-placement="right" title="荷蘭"></div>
+        <div style="left:453px;top:202px;" id="mal" data-toggle="tooltip" data-placement="right" title="馬來西亞"><img
+                src="./flag/malaishia2.png" alt="" style="width: 150px; height: 100px;"></div>
+        <div style="left: 453px; top:303px ;background-image:url(./flag/Thai2.png);" id="tha" data-toggle="tooltip"
+            data-placement="bottom" title="泰國"></div>
+        <div style="left:302px;top:303px" id="mex" data-toggle="tooltip" data-placement="bottom" title="墨西哥"><img
+                src="./flag/Mexico2.png" alt="" style="width: 150px; height: 100px;"></div>
+        <div style="left:151px;top:303px;" id="usa"><img src="./flag/USA2.png" alt=""
+                style="width: 150px;height: 100px;" data-toggle="tooltip" data-placement="bottom" title="美國"></div>
+        <div style="left:0px;top:303px;background-image: url(./flag/Korea2.png);" id="kor" data-toggle="tooltip"
+            data-placement="bottom" title="韓國"></div>
+
+        <div style="left:0px;top: 202px;" id="can" data-toggle="tooltip" data-placement="left" title="加拿大"><img
+                src="./flag/Canada2.png" alt="" style="width: 150px;height: 100px;"></div>
+        <div style="left: 0px ;top: 101px;" id="swi" data-toggle="tooltip" data-placement="left" title="瑞士"><img
+                src="./flag/Switzerland2.png" alt="" style="width: 150px;height: 100px;"></div>
+        <!-- 選中時陰影 -->
+        <div id="shadow"></div>
+
+        <!-- 按鈕界面 -->
+        <div id="cat" style="cursor: default;">
+            <button id="but" style="border-radius: 50%; box-shadow: 0px 2px 10px #777; cursor: default;"><img
+                    src="./flag/catclaw.png" alt="" height=""></button>
+            <p id="go">"點擊貓掌就出發！！"</p>
+        </div>
+
+
+        <!-- 頁尾footer-->
+        <div id="footer">
+            <div class="per">
+                <span>©WebDesigner-WadeLin All Rights Reserved
+                </span>
+                <a href="mailto:comw213@gmail" target="_blank" class="mail"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.facebook.com/lin.a.yun.96/" target="_blank" class="fb"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/comw213/" target="_blank" class="ig"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/comw213" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/%E5%9D%A4%E7%B7%AF-%E6%9E%97-81b593192/" target="_blank"
+                    class="linkin"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/comw213" target="_blank" class="github"><i
+                        class="fab fa-github-square"></i></a>
+            </div>
+        </div>
+
+
+        <!-- js 連結 -->
+        <script src="./LittleMarry.js"> </script>
+
+        <!-- boostraps local設定 -->
+        <script src="./_js/jquery.min.js"></script>
+        <script src="./_js/popper.min.js"></script>
+        <script src="./_js/bootstrap.min.js"></script>
+
+        <!-- jQuery 設定 -->
+        <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+
+        <!-- boostraps tooltips設定 -->
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
+
+        <script>
+            // jQuery
+            $(document).ready(function () {
+                // jQuery for 全畫面彈出視窗關閉按鈕 , 關閉後將全視窗隱藏,以及reload 頁面
+                $('#close').click(function () {
+                    $('#popup').hide();
+                    location.reload();
+                })
+
+                // jQuery for 所有國旗按鈕,按下後背景音樂暫停,並將全視窗卡片內容更換
+                $('#roc').click(function () {
+                    // $('#cmusic').trigger('pause');
+                    $('#popup').show(10, allWindow0); //帶入前面製作的fuction
+                })
+
+                $('#jpn').click(function () {
+                    $('#popup').show(10, allWindow1); //帶入前面製作的fuction
+                })
+
+                $('#fre').click(function () {
+                    $('#popup').show(10, allWindow2); //帶入前面製作的fuction
+                })
+
+                $('#ger').click(function () {
+                    $('#popup').show(10, allWindow3); //帶入前面製作的fuction
+                })
+
+                $('#hol').click(function () {
+                    $('#popup').show(10, allWindow4); //帶入前面製作的fuction
+                })
+
+                $('#mal').click(function () {
+                    $('#popup').show(10, allWindow5); //帶入前面製作的fuction
+                })
+
+                $('#tha').click(function () {
+                    $('#popup').show(10, allWindow6); //帶入前面製作的fuction
+                })
+
+                $('#mex').click(function () {
+                    $('#popup').show(10, allWindow7); //帶入前面製作的fuction
+                })
+
+                $('#usa').click(function () {
+                    $('#popup').show(10, allWindow8); //帶入前面製作的fuction
+                })
+
+                $('#kor').click(function () {
+                    $('#popup').show(10, allWindow9); //帶入前面製作的fuction
+                })
+
+                $('#can').click(function () {
+                    $('#popup').show(10, allWindow10); //帶入前面製作的fuction
+                })
+
+                $('#swi').click(function () {
+                    $('#popup').show(10, allWindow11); //帶入前面製作的fuction
+                })
+
+            })
+        </script>
+
+
+
+</body>
+
+</html>
